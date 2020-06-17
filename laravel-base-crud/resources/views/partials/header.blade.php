@@ -8,7 +8,7 @@
     <title>Laravel Crud NBA</title>
 </head>
 <body>
-    <header>
+    <header class="mb-5">
         <nav class="navbar navbar-expand navbar-light bg-light">
             <div class="nav-brand">
                 <img src="https://upload.wikimedia.org/wikipedia/it/thumb/e/e1/Nba1.png/140px-Nba1.png" style="width: 40px" alt="Logo">
@@ -16,10 +16,13 @@
             
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="">Home</a>
+                <a class="nav-link" href="{{ route('index') }}">All Teams</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Teams</a>
+                    <a class="nav-link" href="{{ route('create') }}">Add Team</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="{{ route('player') }}">Best Player</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="">Info</a>
