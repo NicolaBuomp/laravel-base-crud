@@ -20,7 +20,7 @@
                 <a class="nav-link" href="{{ route('index') }}">All Teams</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('players.index') }}">Best Player</a>
+                    <a class="nav-link" href="{{ route('players.index') }}">Player</a>
                 </li>
                 <li class="nav-item">
                 <a class="nav-link" href="{{ route('players.create') }}">Add Player</a>

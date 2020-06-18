@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Player;
+use Illuminate\Validation\Rule;
 
 class PlayerController extends Controller
 {
@@ -39,18 +40,12 @@ class PlayerController extends Controller
     {
         $data = $request->all();
 
-        $request->validate([
-            'name' => 'required|unique:players|max:50',
-            'team' => 'required|max:50',
-            'age' => 'required',
-            'team' => 'required|max:150'
-        ]);
+        $request->validate($this->validationRules());
 
         $player = new Player();
-        $player->name = $data['name'];
-        $player->team = $data['team'];
-        $player->age = $data['age'];
-        $player->description = $data['description'];
+        
+        $player->fill($data);
+
         $saved = $player->save();
 
         //Redirect to show page
@@ -80,9 +75,9 @@ class PlayerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Player $player)
     {
-        //
+        return view('players.edit', compact('player'));
     }
 
     /**
@@ -92,9 +87,18 @@ class PlayerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Player $player)
     {
-        //
+        $data = $request->all();
+
+        $request->validate($this->validationRules($player->id));
+
+        $updated = $player->update($data);
+
+        if($updated){
+
+            return redirect()->route('players.show' , $player->id);
+        }
     }
 
     /**
@@ -103,8 +107,38 @@ class PlayerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Player $player)
     {
-        //
+        $ref = $player->name;
+
+        $deleted = $player->delete();
+
+        if($deleted) {
+            return redirect()->route('players.index')->with('deleted', $ref);
+        }
+    }
+
+    private function validationRules($id = null){
+        return [
+            'name' => [
+                'required',
+                'max:20',
+                Rule::unique('players')->ignore($id),
+            ],
+            'team' => [
+                'required',
+                'max:50',
+                Rule::unique('players')->ignore($id),
+            ],
+            'age' => [
+                'required',
+                Rule::unique('players')->ignore($id),
+            ],
+            'team' => [
+                'required',
+                'max:200',
+                Rule::unique('players')->ignore($id),
+            ]
+        ];
     }
 }
