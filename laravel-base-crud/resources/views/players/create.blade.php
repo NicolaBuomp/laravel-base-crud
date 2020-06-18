@@ -1,10 +1,9 @@
 @extends('layouts.main')
 
-
 @section('main-content')
 
         <h2 class="text-primary mb-5">
-            Create a new Team
+            Create a new Player
         </h2>
 
         @if($errors->any())
@@ -18,21 +17,25 @@
         @endif
 
 
-        <form action="{{route('store')}}" method="post">
+        <form action="{{route('players.store')}}" method="POST">
 
             @csrf
             @method('POST')
 
             <div class="form-group">
-                <input type="text" class="form-control" name="name" placeholder="Team Name">
+                <input type="text" class="form-control" name="name" placeholder="Name">
             </div>
 
             <div class="form-group">
-                <input type="text" class="form-control" name="city" placeholder="City">
+                <input type="text" class="form-control" name="team" placeholder="Team">
             </div>
 
             <div class="form-group">
-                <input type="number" class="form-control" name="titles" placeholder="NBA Titles">
+                <input type="number" class="form-control" name="age" placeholder="Age">
+            </div>
+
+            <div class="form-group">
+                <input type="text" class="form-control" name="description" placeholder="Description">
             </div>
 
             <input type="submit" class="btn btn-primary" value="Create">

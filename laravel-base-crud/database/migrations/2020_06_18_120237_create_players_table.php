@@ -18,6 +18,7 @@ class CreatePlayersTable extends Migration
             $table->string('name');
             $table->string('team');
             $table->tinyInteger('age');
+            $table->string('description');
             $table->timestamps();
         });
     }

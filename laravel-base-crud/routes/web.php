@@ -13,6 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('/' , 'HomeController');
+Route::resource('/', 'HomeController');
 
-Route::get('/player' , 'PlayerController@player')->name('player');
+Route::resource('/players', 'PlayerController');

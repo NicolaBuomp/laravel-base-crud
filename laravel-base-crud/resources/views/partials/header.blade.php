@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css'/>
-    <title>Laravel Crud NBA</title>
+    <title>NBA Teams</title>
 </head>
 <body>
+
     <header class="mb-5">
         <nav class="navbar navbar-expand navbar-light bg-light">
             <div class="nav-brand">
@@ -19,14 +20,12 @@
                 <a class="nav-link" href="{{ route('index') }}">All Teams</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('create') }}">Add Team</a>
+                    <a class="nav-link" href="{{ route('players.index') }}">Best Player</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="{{ route('player') }}">Best Player</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">Info</a>
+                <a class="nav-link" href="{{ route('players.create') }}">Add Player</a>
                 </li>
             </ul>
         </nav>
     </header>
+    

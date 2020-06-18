@@ -1,6 +1,6 @@
 @include('partials.header')
 
-<main class="container">
+<main class="main-content container">
     @yield('main-content')
 </main>
 

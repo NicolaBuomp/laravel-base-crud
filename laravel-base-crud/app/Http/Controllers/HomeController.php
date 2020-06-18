@@ -14,10 +14,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-
         $teams = Team::all();
-
-        return view('home.home', compact('teams'));
+        
+        return view('index-home' , compact('teams'));
     }
 
     /**
@@ -27,7 +26,7 @@ class HomeController extends Controller
      */
     public function create()
     {
-        return view('home.create');
+        //
     }
 
     /**
@@ -38,26 +37,7 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-
-        $request->validate([
-            'name' => 'required|unique:teams|max:50',
-            'city' => 'required|max:50',
-            'titles' => 'required'
-        ]);
-
-        $team = new Team();
-        $team->name = $data['name'];
-        $team->city = $data['city'];
-        $team->titles = $data['titles'];
-        $saved = $team->save();
-        //Redirect to show page
-
-        if($saved){
-
-            $newTeam = Team::find($team->id);
-            return redirect()->route('show', $newTeam);
-        }
+        //
     }
 
     /**
@@ -66,9 +46,9 @@ class HomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Team $team) 
+    public function show($id)
     {
-        return view('show', compact('team'));
+        //
     }
 
     /**
